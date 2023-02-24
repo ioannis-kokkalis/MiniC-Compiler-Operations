@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "k/URfFio7jQZ9gHi8zUFOwpW/W7AG9cMYE5BTiZVMtcBSvbC+Z8qCDyspQbVlaB5p39yl7uaSr1cRGdsXfBcMA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\giann\\Desktop\\MiniC\\MiniC\\MiniC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\giann\\.nuget\\packages\\antlr4.runtime.standard\\4.11.1\\antlr4.runtime.standard.4.11.1.nupkg.sha512"
+  ],
+  "logs": []
+}
