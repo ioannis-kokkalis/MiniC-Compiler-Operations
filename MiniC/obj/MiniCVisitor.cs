@@ -100,19 +100,19 @@ public interface IMiniCVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitExpressionLogicalComparative([NotNull] MiniCParser.ExpressionLogicalComparativeContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ExpressionCumulative</c>
-	/// labeled alternative in <see cref="MiniCParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExpressionCumulative([NotNull] MiniCParser.ExpressionCumulativeContext context);
-	/// <summary>
 	/// Visit a parse tree produced by the <c>ExpressionNUMBER</c>
 	/// labeled alternative in <see cref="MiniCParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExpressionNUMBER([NotNull] MiniCParser.ExpressionNUMBERContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ExpressionAdditive</c>
+	/// labeled alternative in <see cref="MiniCParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExpressionAdditive([NotNull] MiniCParser.ExpressionAdditiveContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>ExpressionParenthesis</c>
 	/// labeled alternative in <see cref="MiniCParser.expression"/>.

@@ -466,7 +466,17 @@ public partial class MiniCParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class ExpressionCumulativeContext : ExpressionContext {
+	public partial class ExpressionNUMBERContext : ExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NUMBER() { return GetToken(MiniCParser.NUMBER, 0); }
+		public ExpressionNUMBERContext(ExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMiniCVisitor<TResult> typedVisitor = visitor as IMiniCVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitExpressionNUMBER(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ExpressionAdditiveContext : ExpressionContext {
 		public IToken @operator;
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
 			return GetRuleContexts<ExpressionContext>();
@@ -476,21 +486,11 @@ public partial class MiniCParser : Parser {
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLUS() { return GetToken(MiniCParser.PLUS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MINUS() { return GetToken(MiniCParser.MINUS, 0); }
-		public ExpressionCumulativeContext(ExpressionContext context) { CopyFrom(context); }
+		public ExpressionAdditiveContext(ExpressionContext context) { CopyFrom(context); }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMiniCVisitor<TResult> typedVisitor = visitor as IMiniCVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExpressionCumulative(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class ExpressionNUMBERContext : ExpressionContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NUMBER() { return GetToken(MiniCParser.NUMBER, 0); }
-		public ExpressionNUMBERContext(ExpressionContext context) { CopyFrom(context); }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IMiniCVisitor<TResult> typedVisitor = visitor as IMiniCVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExpressionNUMBER(this);
+			if (typedVisitor != null) return typedVisitor.VisitExpressionAdditive(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -812,15 +812,15 @@ public partial class MiniCParser : Parser {
 						break;
 					case 5:
 						{
-						_localctx = new ExpressionCumulativeContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new ExpressionAdditiveContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
 						State = 82;
 						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
 						State = 83;
-						((ExpressionCumulativeContext)_localctx).@operator = TokenStream.LT(1);
+						((ExpressionAdditiveContext)_localctx).@operator = TokenStream.LT(1);
 						_la = TokenStream.LA(1);
 						if ( !(_la==PLUS || _la==MINUS) ) {
-							((ExpressionCumulativeContext)_localctx).@operator = ErrorHandler.RecoverInline(this);
+							((ExpressionAdditiveContext)_localctx).@operator = ErrorHandler.RecoverInline(this);
 						}
 						else {
 							ErrorHandler.ReportMatch(this);

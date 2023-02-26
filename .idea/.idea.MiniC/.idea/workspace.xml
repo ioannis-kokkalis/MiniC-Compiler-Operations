@@ -10,6 +10,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2e362b08e1a2421ca35ba4723d73984f2ea00/57/7d737320/AbstractParseTreeVisitor`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2e362b08e1a2421ca35ba4723d73984f2ea00/a3/9a093770/ITerminalNode.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -66,6 +70,7 @@
       <workItem from="1677157212820" duration="7000" />
       <workItem from="1677250195250" duration="1706000" />
       <workItem from="1677251966352" duration="1208000" />
+      <workItem from="1677253428449" duration="17924000" />
     </task>
     <servers />
   </component>

@@ -25,7 +25,7 @@ expression	: NUMBER														#ExpressionNUMBER
 			| expression OR expression										#ExpressionLogicalOr
 			| expression operator=(EQUAL|NEQUAL|GT|GTE|LT|LTE) expression	#ExpressionLogicalComparative
 			| expression operator=(MUL|DIV) expression						#ExpressionMultiplicative
-			| expression operator=(PLUS|MINUS) expression					#ExpressionCumulative
+			| expression operator=(PLUS|MINUS) expression					#ExpressionAdditive
 			| PLUS expression												#ExpressionPositive
 			| MINUS expression												#ExpressionNegative
 			| IDENTIFIER ASSIGNMENT expression								#ExpressionAssignment
@@ -81,6 +81,6 @@ LEFT_CURLY_BRACKET : '{' ;
 RIGHT_CURLY_BRACKET : '}' ;
 
 NUMBER : '0'|[1-9][0-9]*;
-IDENTIFIER : [a-zA-Z][a-zA-Z0-9_]* ;
+IDENTIFIER : [a-zA-Z][a-zA-Z0-9_]*;
 
 WS : [ \t\n\r]+ -> skip ;

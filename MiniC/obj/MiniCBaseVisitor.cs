@@ -143,17 +143,6 @@ public partial class MiniCBaseVisitor<Result> : AbstractParseTreeVisitor<Result>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitExpressionLogicalComparative([NotNull] MiniCParser.ExpressionLogicalComparativeContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ExpressionCumulative</c>
-	/// labeled alternative in <see cref="MiniCParser.expression"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitExpressionCumulative([NotNull] MiniCParser.ExpressionCumulativeContext context) { return VisitChildren(context); }
-	/// <summary>
 	/// Visit a parse tree produced by the <c>ExpressionNUMBER</c>
 	/// labeled alternative in <see cref="MiniCParser.expression"/>.
 	/// <para>
@@ -164,6 +153,17 @@ public partial class MiniCBaseVisitor<Result> : AbstractParseTreeVisitor<Result>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitExpressionNUMBER([NotNull] MiniCParser.ExpressionNUMBERContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ExpressionAdditive</c>
+	/// labeled alternative in <see cref="MiniCParser.expression"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitExpressionAdditive([NotNull] MiniCParser.ExpressionAdditiveContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>ExpressionParenthesis</c>
 	/// labeled alternative in <see cref="MiniCParser.expression"/>.

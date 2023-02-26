@@ -2,6 +2,7 @@
 
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using MiniC.SyntaxTree;
 
 namespace MiniC {
 
@@ -11,6 +12,8 @@ namespace MiniC {
 			var parser = new MiniCParser(new CommonTokenStream(lexer));
 
 			IParseTree syntaxTree = parser.compileUnit();
+
+			new SyntaxTreeGIFGenerator().Visit(syntaxTree);
 		}
 	}
 	
