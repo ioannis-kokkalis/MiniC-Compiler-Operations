@@ -18,7 +18,7 @@ functionDefinition	: FUNCTION IDENTIFIER LEFT_PARENTHESIS formalArguments? RIGHT
 
 expression	: NUMBER														#ExpressionNUMBER
 			| IDENTIFIER													#ExpressionIDENTIFIER
-			| IDENTIFIER LEFT_PARENTHESIS actualArguments RIGHT_PARENTHESIS	#ExpressionFunctionCall
+			| IDENTIFIER LEFT_PARENTHESIS actualArguments? RIGHT_PARENTHESIS#ExpressionFunctionCall
 			| LEFT_PARENTHESIS expression RIGHT_PARENTHESIS					#ExpressionParenthesis
 			| NOT expression												#ExpressionLogicalNot
 			| expression AND expression										#ExpressionLogicalAnd

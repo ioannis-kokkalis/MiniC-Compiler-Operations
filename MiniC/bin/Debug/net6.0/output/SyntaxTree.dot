@@ -76,4 +76,10 @@ digraph G{
 "CompoundStatementNotEmpty_S45"->"StatementReturn_S75"
 "StatementReturn_S75"->"ExpressionIDENTIFIER_S76"
 "ExpressionIDENTIFIER_S76"->"IDENTIFIER_c_S77"
+"CompileUnit_S0"->"FunctionDefinition_S78"
+"FunctionDefinition_S78"->"IDENTIFIER_y_S79"
+"FunctionDefinition_S78"->"CompoundStatementEmpty_S80"
+"CompileUnit_S0"->"StatementExpression_S81"
+"StatementExpression_S81"->"FunctionCall_S82"
+"FunctionCall_S82"->"IDENTIFIER_y_S83"
 }
