@@ -3,18 +3,11 @@
 namespace MiniC.AbstractSyntaxTree; 
 
 public class MiniCASTVisitor<TReturn, TParameters> : ASTBaseVisitor<TReturn, TParameters> {
-	
-	public override TReturn VisitChildren(IASTParentNode node, params TParameters[] parameters) {
-		TReturn result = default;
-		foreach (var child in node.GetChildren())
-			result = Summarize(child.Accept(this, parameters), result);
-		return result;
-	}
 
 	public TReturn VisitChildrenInContext(IASTParentNode node, int context, params TParameters[] parameters) {
 		TReturn result = default;
 		foreach (var child in (node as ASTCompositeNode).GetChildren(context))
-			result = Summarize(child.Accept(this, parameters), result);
+			result = Summarize(Visit(child, parameters), result);
 		return result;
 	}
 	

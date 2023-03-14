@@ -35,7 +35,7 @@ public class CompileUnitNode : ASTCompositeNode {
 
 public class FunctionDefinitionNode : ASTCompositeNode {
 	
-	public enum Context { IDENTIFIER = 0, FORMAL_ARGUMENTS, STATEMENTS }
+	public enum Context { IDENTIFIER = 0, FORMAL_ARGUMENTS, COMPOUND_STATEMENT }
         
 	public FunctionDefinitionNode() : base(NodeType.FUNCTION_DEFINITION.ToString(), (int) NodeType.FUNCTION_DEFINITION, Enum.GetNames(typeof(Context)).Length) { }
 	
@@ -71,7 +71,9 @@ public class ActualArgumentsNode : ASTCompositeNode {
 
 public class ReturnNode : ASTCompositeNode{
 
-	public ReturnNode() : base(NodeType.RETURN.ToString(), (int) NodeType.RETURN, 0) { }
+	public enum Context { EXPRESSION = 0 }
+
+	public ReturnNode() : base(NodeType.RETURN.ToString(), (int) NodeType.RETURN, Enum.GetNames(typeof(Context)).Length) { }
 	
 	public override TReturn Accept<TReturn, TParameters>(IASTBaseVisitor<TReturn, TParameters> visitor, params TParameters[] parameters) {
 		return (visitor as MiniCASTVisitor<TReturn, TParameters>).VisitReturn(this, parameters);

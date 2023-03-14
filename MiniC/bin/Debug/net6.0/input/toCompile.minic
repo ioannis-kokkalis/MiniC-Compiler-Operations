@@ -5,17 +5,13 @@ while (a<10){
    if ( b > 15){
     break;
    }
-   
 }
 
 function foo(a,b){
     if ( a>1){
-        c = b+(d+2);
+        c = b+d;
+        2 > 4;
     }
     c=a+b;
-    return c;
+    return -(c + 1);
 }
-
-function y() {}
-
-y();

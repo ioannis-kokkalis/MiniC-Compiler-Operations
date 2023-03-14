@@ -21,6 +21,8 @@
     <ItemGroup>
       <Content Include="bin\Debug\net6.0\input\test.minic" />
       <Content Include="bin\Debug\net6.0\input\toCompile.minic" />
+      <Content Include="bin\Debug\net6.0\output\AbstractSyntaxTree.dot" />
+      <Content Include="bin\Debug\net6.0\output\AbstractSyntaxTree.gif" />
       <Content Include="bin\Debug\net6.0\output\SyntaxTree.dot" />
       <Content Include="bin\Debug\net6.0\output\SyntaxTree.gif" />
       <Content Include="bin\Debug\net6.0\toCompile.txt" />
