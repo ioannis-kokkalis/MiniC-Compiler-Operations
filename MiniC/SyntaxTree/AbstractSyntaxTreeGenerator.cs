@@ -9,8 +9,12 @@ public class AbstractSyntaxTreeGenerator : MiniCBaseVisitor<int> {
 
 	public ASTNode Root { get; private set; }
 
-	private Stack<ASTCompositeNode> parentNodeStack = new();
-	private Stack<int> contextStack = new();
+	private readonly Stack<ASTCompositeNode> parentNodeStack = new();
+	private readonly Stack<int> contextStack = new();
+
+	private Scope scope;
+
+	private readonly Queue<Tuple<StatementCompoundNotEmptyNode, MiniCParser.CompoundStatementNotEmptyContext>> functionImlementations = new();
 
 	/* ||| Private Methods (START) */
 
@@ -66,6 +70,17 @@ public class AbstractSyntaxTreeGenerator : MiniCBaseVisitor<int> {
 		return child;
 	}
 	
+	private void VisitFunctionImplementations() {
+		foreach( var fi in functionImlementations ) {
+			var abstractSyntaxTreeNode = fi.Item1;
+			var syntaxTreeNode = fi.Item2;
+
+			scope.EnterScope(abstractSyntaxTreeNode.sb);
+			VisitChildrenInContext(syntaxTreeNode.statement(), abstractSyntaxTreeNode, (int)StatementCompoundNotEmptyNode.Context.STATEMENTS);
+			scope.LeaveScope();
+		}
+	}
+
 	/* Private Methods (END) */
 
 	/* ||| Overrides [MiniCBaseVisitor<int>] (START) */
@@ -73,9 +88,17 @@ public class AbstractSyntaxTreeGenerator : MiniCBaseVisitor<int> {
 	public override int VisitCompileUnit(MiniCParser.CompileUnitContext context) {
 		CompileUnitNode node = new();
 
-		VisitChildrenInContext(context.statement(), node, (int) CompileUnitNode.Context.STATEMENTS);
-		
+		scope = new Scope();
+
 		VisitChildrenInContext(context.functionDefinition(), node, (int) CompileUnitNode.Context.FUNCTION_DEFINITIONS);
+
+		scope.EnterScope(node.sb);
+
+		VisitChildrenInContext(context.statement(), node, (int) CompileUnitNode.Context.STATEMENTS); // function main()
+
+		VisitFunctionImplementations();
+
+		scope.LeaveScope();
 
 		Root = node;
 
@@ -116,9 +139,13 @@ public class AbstractSyntaxTreeGenerator : MiniCBaseVisitor<int> {
 		
 		VisitTerminalInContext(context, context.IDENTIFIER().Symbol, node, (int) FunctionDefinitionNode.Context.IDENTIFIER);
 
+		scope.EnterScope(node.sb);
+
 		VisitChildInContext(context.formalArguments(), node, (int) FunctionDefinitionNode.Context.FORMAL_ARGUMENTS);
 		
 		VisitChildInContext(context.compoundStatement(), node, (int) FunctionDefinitionNode.Context.COMPOUND_STATEMENT);
+
+		scope.LeaveScope();
 
 		return 0;
 	}
@@ -374,7 +401,15 @@ public class AbstractSyntaxTreeGenerator : MiniCBaseVisitor<int> {
 
 		parent.AddChild(node, contextIndex);
 		
-		VisitChildrenInContext(context.statement(), node, (int) StatementCompoundNotEmptyNode.Context.STATEMENTS);
+		if( parent is FunctionDefinitionNode ) {
+			node.sb = ((FunctionDefinitionNode) parent).sb;
+			functionImlementations.Enqueue(new Tuple<StatementCompoundNotEmptyNode, MiniCParser.CompoundStatementNotEmptyContext>(node, context));
+		}
+		else {
+			scope.EnterScope(node.sb);
+			VisitChildrenInContext(context.statement(), node, (int)  StatementCompoundNotEmptyNode.Context.STATEMENTS);
+			scope.LeaveScope();
+		}
 		
 		return 0;
 	}
@@ -385,14 +420,24 @@ public class AbstractSyntaxTreeGenerator : MiniCBaseVisitor<int> {
 		var symbolType = node.Symbol.Type;
 		var symbolText = node.Symbol.Text;
 		
-		if (symbolType == MiniCLexer.IDENTIFIER)
-			nnode = new IDENTIFIERNode(symbolText);
+		var parent = parentNodeStack.Peek();
+		var contextIndex = contextStack.Peek();
+
+		if( symbolType == MiniCLexer.IDENTIFIER ) {
+			if( parent is FunctionDefinitionNode )
+				nnode = scope.fuctionDefinitionSymbolTable.GetNodeOnlyInCurrentSymbolTable(symbolText);
+			else if( parent is FormalArgumentsNode )
+				nnode = scope.currentsymbolTable.GetNodeOnlyInCurrentSymbolTable(symbolText);
+			else if( parent is ExpressionFunctionCallNode )
+				nnode = scope.fuctionDefinitionSymbolTable.GetNode(symbolText, false);
+			else if( parent is ExpressionAssignmentNode )
+				nnode = scope.currentsymbolTable.GetNode(symbolText, true);
+			else
+				nnode = scope.currentsymbolTable.GetNode(symbolText, false);
+		}
 		else if (symbolType == MiniCLexer.NUMBER)
 			nnode = new NUMBERNode(symbolText);
 		else return 0;
-
-		var parent = parentNodeStack.Peek();
-		var contextIndex = contextStack.Peek();
 
 		parent.AddChild(nnode, contextIndex);
 

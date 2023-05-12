@@ -27,7 +27,8 @@ public class AbstractSyntaxTreeGIFGenerator : MiniCASTVisitor<int, ASTNode> {
 			dotFile.Write("\"" + child.GetLabel() + "\"");
 		}
 		
-		dotFile.WriteLine(";");
+		if( !first )
+			dotFile.WriteLine(";");
 		dotFile.WriteLine($"\t\tlabel = \"{contextName}\";");
 		dotFile.WriteLine("\t}");
 	}

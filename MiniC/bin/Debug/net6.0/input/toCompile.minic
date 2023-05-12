@@ -7,8 +7,11 @@ while (a<10){
    }
 }
 
+foo(a,0);
+d = 4;
+
 function foo(a,b){
-    if ( a>1){
+    if ( d>1){
         c = b+d;
         2 > 4;
     }

@@ -45,11 +45,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\giann\\Desktop\\MiniC\\MiniC\\MiniC.csproj",
+      "projectUniqueName": "C:\\Users\\giann\\Desktop\\MiniC-Compiler-Operations\\MiniC\\MiniC.csproj",
       "projectName": "MiniC",
-      "projectPath": "C:\\Users\\giann\\Desktop\\MiniC\\MiniC\\MiniC.csproj",
+      "projectPath": "C:\\Users\\giann\\Desktop\\MiniC-Compiler-Operations\\MiniC\\MiniC.csproj",
       "packagesPath": "C:\\Users\\giann\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\giann\\Desktop\\MiniC\\MiniC\\obj\\",
+      "outputPath": "C:\\Users\\giann\\Desktop\\MiniC-Compiler-Operations\\MiniC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\giann\\AppData\\Roaming\\NuGet\\NuGet.Config"

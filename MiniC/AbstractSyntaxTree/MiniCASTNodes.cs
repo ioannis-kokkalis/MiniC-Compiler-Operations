@@ -25,6 +25,8 @@ public class CompileUnitNode : ASTCompositeNode {
 	
 	public enum Context { STATEMENTS = 0, FUNCTION_DEFINITIONS }
         
+	public SymbolTable sb = new();
+
 	public CompileUnitNode() : base(NodeType.COMPILE_UNIT.ToString(), (int) NodeType.COMPILE_UNIT, Enum.GetNames(typeof(Context)).Length) { }
 	
 	public override TReturn Accept<TReturn, TParameters>(IASTBaseVisitor<TReturn, TParameters> visitor, params TParameters[] parameters) {
@@ -37,6 +39,8 @@ public class FunctionDefinitionNode : ASTCompositeNode {
 	
 	public enum Context { IDENTIFIER = 0, FORMAL_ARGUMENTS, COMPOUND_STATEMENT }
         
+	public SymbolTable sb = new();
+
 	public FunctionDefinitionNode() : base(NodeType.FUNCTION_DEFINITION.ToString(), (int) NodeType.FUNCTION_DEFINITION, Enum.GetNames(typeof(Context)).Length) { }
 	
 	public override TReturn Accept<TReturn, TParameters>(IASTBaseVisitor<TReturn, TParameters> visitor, params TParameters[] parameters) {
@@ -330,6 +334,8 @@ public class StatementCompoundEmptyNode : ASTCompositeNode {
 public class StatementCompoundNotEmptyNode : ASTCompositeNode {
 	
 	public enum Context { STATEMENTS = 0 }
+
+	public SymbolTable sb = new();
 
 	public StatementCompoundNotEmptyNode() : base(NodeType.STATEMENT_COMPOUND_NOT_EMPTY.ToString(), (int) NodeType.STATEMENT_COMPOUND_NOT_EMPTY, Enum.GetNames(typeof(Context)).Length) { }
 	

@@ -74,6 +74,8 @@
       <workItem from="1677251966352" duration="1208000" />
       <workItem from="1677253428449" duration="38019000" />
       <workItem from="1677759006426" duration="46602000" />
+      <workItem from="1683482993670" duration="745000" />
+      <workItem from="1683894928298" duration="2147000" />
     </task>
     <servers />
   </component>
@@ -101,24 +103,5 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/MiniC/SyntaxTree/AbstractSyntaxTreeGenerator.cs</url>
-          <line>44</line>
-          <properties documentPath="C:\Users\giann\Desktop\MiniC\MiniC\SyntaxTree\AbstractSyntaxTreeGenerator.cs" initialLine="44" containingFunctionPresentation="method 'VisitTerminalInContext'">
-            <startOffsets>
-              <option value="1126" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1127" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
