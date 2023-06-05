@@ -20,6 +20,7 @@ namespace MiniC {
 			var abstractSyntaxTree = astGenerator.Root;
 			
 			new AbstractSyntaxTreeGIFGenerator().Visit(abstractSyntaxTree);
+			new AbstractSyntaxTreeAssemblyX86Translator(astGenerator.Scope).Visit(abstractSyntaxTree);
 		}
 	}
 	

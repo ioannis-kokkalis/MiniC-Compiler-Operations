@@ -38,6 +38,11 @@ public class SymbolTable {
 
 		return node;
 	}
+
+	public Dictionary<string,IDENTIFIERNode>.Enumerator GetEnumarator()
+	{
+		return entries.GetEnumerator();
+	}
 	
 }
 

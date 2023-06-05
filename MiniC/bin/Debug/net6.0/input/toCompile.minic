@@ -1,20 +1,16 @@
-a=0;
-while (a<10){
-   a=a+1;
-   b=a+10;
-   if ( b > 15){
-    break;
-   }
-}
+a = 3/(5+8-5*2);
+b=3;
 
-foo(a,0);
-d = 4;
+foo(8,b);
 
 function foo(a,b){
-    if ( d>1){
-        c = b+d;
-        2 > 4;
-    }
-    c=a+b;
-    return -(c + 1);
+   z = 1;
+   a = 5;
+   b = a+z;
+}
+
+function foo1(){
+   a = 3;
+   c=3;
+   foo(c,b);
 }
